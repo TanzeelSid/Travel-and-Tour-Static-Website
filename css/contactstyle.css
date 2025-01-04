@@ -1,0 +1,111 @@
+:root{
+	--bg-color: #000000;
+	--second-bg-color: #393E46;
+	--text-color: #fff;
+	--second-color: #ccc;
+	--main-color: #4E9F3D;
+	--big-font: 5rem;
+	--h2-font: 3rem;
+	--p-font: 1.1rem;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background: none;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../img/contactbg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(5px);
+    z-index: -1;
+}
+
+.container {
+    width: 70%;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    background: var(--second-bg-color);
+    padding: 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 10px;
+}
+
+.map-container iframe {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.main {
+    padding: 25px;
+    background: var(--second-bg-color);
+    margin-top: 100px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.main h1 {
+    text-align: center;
+    color: var(--text-color);
+}
+
+.main form {
+    width: 100%;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 8px;
+}
+
+.main form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.main form input,
+.main form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #111;
+    border-radius: 4px;
+}
+
+.main form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.main form button:hover {
+    background: var(--second-color);
+    color: var(--main-color);
+    font-weight: bolder;
+}

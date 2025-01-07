@@ -74,7 +74,7 @@ body::before {
 .main form {
     width: 100%;
     padding: 20px;
-    background: #f4f4f4;
+    background: #D9DFC6;
     border-radius: 8px;
 }
 
@@ -105,7 +105,7 @@ body::before {
 }
 
 .main form button:hover {
-    background: var(--second-color);
+    background: var(--second-bg-color);
     color: var(--main-color);
     font-weight: bolder;
 }

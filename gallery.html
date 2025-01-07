@@ -3,115 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f41c40a5de.js" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <title>About Us - Pakistan Odyssey</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #D9DFC6;
-            color: #333;
-        }
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+background-color: #333;
+}
+.body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px auto 50px auto;
+    background-color: #333;
+}
 
-        header {
-            background-color: #006400;
-            color: #fff;
-            text-align: center;
-            padding: 1.5em 0;
-            margin-top: 70px;
-        }
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 80%;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
 
-        header p {
-            margin: 0.5em 0 0;
-            font-size: 1.2em;
-        }
+.gallery-item:hover {
+    transform: scale(1.1);
+}
 
-        .container {
-            display: flex;
-            align-items: flex-start;
-            margin: 2em auto;
-            padding: 0 1em;
-            max-width: 1200px;
-            gap: 2em;
-        }
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
 
-        .gallery {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            flex: 1;
-            gap: 50px;
-        }
+.gallery-item:hover img {
+    transform: scale(1.2);
+}
 
-        .gallery img {
-            max-width: 250px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.466);
-            position: relative;
-        }
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(23, 148, 44, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .gallery img:nth-child(1) {
-            transform: translatex(70px);
-        }
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
 
-        .gallery img:nth-child(2) {
-            transform: translatex(-35px);
-        }
+.text {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
-        .gallery img:nth-child(3) {
-            transform: translatex(70px);
-        }
+/* Gallery Header Styles */
+.gallery-header {
+    background-color: #333; /* Dark background for the header */
+    color: white; /* White text color */
+    padding: 60px 20px; /* Top and bottom padding */
+    text-align: center; /* Center the text */
+    margin-top: 70px;
+}
 
-        .about-content {
-            flex: 2;
-            line-height: 1.6;
-        }
+.main-title {
+    font-size: 48px; /* Large font size for the header */
+    font-weight: bold; /* Bold title */
+    text-transform: uppercase; /* Uppercase for a strong effect */
+    letter-spacing: 5px; /* Letter spacing to enhance the effect */
+    margin-bottom: 20px; /* Space below the title */
+    position: relative; /* To add a cool underline effect */
+}
 
-        .about-content h2 {
-            font-size: 2em;
-            margin-bottom: 0.5em;
-            color: #006400;
-        }
+.main-title::after {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute;
+    left: 0;
+    bottom: -10px; /* Position the line below the title */
+    width: 100%;
+    height: 3px; /* Line thickness */
+    background-color: #4E9F3D; /* Warm accent color */
+    border-radius: 5px; /* Rounded corners for the line */
+}
 
-        .about-content p {
-            margin-bottom: 1em;
-        }
+.sub-title {
+    font-size: 20px; /* Slightly smaller font for the sub-line */
+    font-style: italic; /* Make the sub-line italic */
+    max-width: 800px; /* Set a maximum width to avoid too much text stretching */
+    margin: 0 auto; /* Center the sub-line */
+    color: #d1d1d1; /* Lighter color for the sub-line */
+    line-height: 1.6; /* Add some line height for better readability */
+    padding-top: 10px; /* Add a little space on top of the sub-line */
+}
 
-        .about-content a {
-            color: #006400;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em 0;
-            margin-top: 2em;
-        }
-
-        footer p {
-            margin: 0;
-        }
 
     </style>
 </head>
 <body>
     <!-- Navbar start -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 shadow-sm fixed-top">
-        <a href="home.html" class="navbar-brand font-weight-bold mr-auto">Pakistan <span>Odyssey</span></a>
+        <a href="#" class="navbar-brand font-weight-bold mr-auto">Pakistan <span>Odyssey</span></a>
         <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown megamenu">
@@ -195,43 +212,122 @@
     </nav>
     <!-- Navbar end -->
 
-
- <!-- About Us - Pakistan Odyssey -->
- <header>
-    <h1>About Us</h1>
-    <p>Discover the Story Behind Pakistan Odyssey</p>
-</header>
-
-<div class="container">
-    <div class="gallery">
-        <div data-aos="fade-up-right"><img src="https://www.ajktours.com/wp-content/uploads/2024/04/Shangrila_Lower_Kachura_Lake-1024x678.jpg" alt="Scenic beauty of Northern Pakistan"></div>
-        <img src="https://www.24newshd.tv/digital_images/extra-large/2022-11-30/most-beautiful-lakes-in-pakistan-1669796572-9096.png" alt="Beautiful lake in Pakistan">
-        <div data-aos="fade-up-right"><img src="https://media.istockphoto.com/id/1462192784/photo/nanga-parbat-mountain-reflection-in-the-lake-pakistan.jpg?s=612x612&w=0&k=20&c=vXr5YErgAzLh6suMCUlBlIpvjzgkRbRUL9o4NyjW_7I=" alt="Mountain views of Pakistan"></div>
+    <!-- Gallery Section -->
+    <div class="gallery-header text-center py-5">
+        <h1 class="main-title">Our Gallery</h1>
+        <p class="sub-title">Explore the vibrant beauty of Pakistan, through the eyes of travelers, and embark on unforgettable tours with us!</p>
     </div>
-
-    <div class="about-content">
-        <h2 data-aos="fade-left">Welcome to Pakistan Odyssey</h2>
-        <p data-aos="fade-left">Pakistan Odyssey was created to share the unparalleled beauty of Pakistan and make it accessible to travelers worldwide. Our mission is to provide well-planned trips to explore the cultural, historical, and scenic treasures of all the provinces, with a special focus on the breathtaking northern areas of the country.</p>
-
-        <h2 data-aos="fade-left">About the Creator</h2>
-        <p data-aos="fade-left">The founder of Pakistan Odyssey is an avid traveler and nature enthusiast who has spent years exploring the wonders of Pakistan. With a background in tourism and a passion for promoting the country's rich heritage, our team is dedicated to delivering unforgettable travel experiences.</p>
-
-        <h2 data-aos="fade-left">Skills & Achievements</h2>
-        <p data-aos="fade-left">Our expertise lies in organizing seamless tours, from cultural immersions in historic cities like Lahore and Karachi to adventurous treks in the Hunza Valley. Over the years, we have successfully planned numerous trips for tourists, earning recognition for exceptional service and attention to detail.</p>
-
-        <h2 data-aos="fade-left">Hobbies & Interests</h2>
-        <p data-aos="fade-left">When we are not planning tours, we love capturing the beauty of Pakistan through photography, trekking across its majestic landscapes, and connecting with local communities to learn their traditions and stories. <a href="gallery.html">Watch Our Gallery >></a> </p>
+<div class="body">
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgBg0EKvlHvZFqvS4I2-3yIJtNj8AmUW_ssA3V9OZB5FeLZFx_6Ny8zVznJUT4" alt="Image 1">
+            <div class="overlay">
+                <div class="text">Hunza Valley</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSAe9UynvNMSfb8vLpROPDo7ZQ4-nAZpd3rMTDv5jiBBcLQzaxqZ66YsvsR7zd9" alt="Image 2">
+            <div class="overlay">
+                <div class="text">Attabad Lake</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSKMPsj0sayBgoKrmS-9MgSPu3FQSahOS77vfDhm_oPKUkmquFKGf4JjkLouED3" alt="Image 3">
+            <div class="overlay">
+                <div class="text">Swat Valley</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSgn0FMr6zOVCV19_dq33vX7pV0NGUroYabgHi3UQq3USOgIngMpRPCbJUvdv7P" alt="Image 4">
+            <div class="overlay">
+                <div class="text">Naran Kaghan</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTrnX0qp8Rhn8RxWFC5coD5zvUwvs6cl4QBpVBdopUVPoEHB4gZ27aLIZ2fvwau" alt="Image 4">
+            <div class="overlay">
+                <div class="text">Badshahi Mosque</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQDu5wmJ34C3rxJlFNXQqij9GA1h0drps2ddYhgZIp_vM1vDCviMv_HzzVYfyn5" alt="Image 4">
+            <div class="overlay">
+                <div class="text">Concordia</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRF1Og7xLbXEUp7LMvre9jisx1OQ7SM8QRtQSB4ypHdPQaUm88BU2n2Aj7Unw6c" alt="Image 4">
+            <div class="overlay">
+                <div class="text">Neelum Valley</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ0ODooi4NRRQ24x3RscJpsLWHyZxL-bmCSCJOn8Hugt8yfKsWaJ1qBRJ5zOpSE" alt="Image 4">
+            <div class="overlay">
+                <div class="text">Deosai Park</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRsu_MDqVxBOq26wPCGQFR8dQDjDsgB30FF_RKyVlxcO9aE_Ca0hfpLoOrY-5D5" alt="Image 4">
+            <div class="overlay">
+                <div class="text">Mohenjo-daro</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTZBx69oANcVnO7qTftwDGGKscAZXA_MHlODznEceLhntKtHqkv0bpI0wpD32AD" alt="Image 4">
+            <div class="overlay">
+                <div class="text">Piri Sohawa</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUVypa3v-JQSDq6pRT4la6b0Py69BSiNkHNbuBFMnyIvfSE_gFbiLM1FfF3DoJ" alt="Image 4">
+            <div class="overlay">
+                <div class="text">Fairy Meadows</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://www.exploria.pk/wp-content/uploads/2023/04/Kalash-Valley-Holiday-Travel-Tour-Package-1024x1024-1.jpg" alt="Image 4">
+            <div class="overlay">
+                <div class="text">Kalash Valley</div>
+            </div>
+        </div>
     </div>
 </div>
 
-<footer>
-    <p>&copy; 2025 Pakistan Odyssey. All Rights Reserved.</p>
-</footer>
-
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-</script>
+    <!-- Footer Section -->
+    <div class="footer-container">
+        <footer class="footer">
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h6>About us</h6>
+                    <a href="#">Learn more about Pakistan Odyssey</a>
+                </div>
+                <div class="footer-column">
+                    <h6>Services</h6>
+                    <a href="#">Our travel packages</a>
+                </div>
+                <div class="footer-column">
+                    <h6>Contact</h6>
+                    <a href="#">Get in touch with us</a>
+                </div>
+            </div>
+            <div class="footer-text">
+                <p>Pakistan Odyssey: Your trusted partner in discovering the extraordinary beauty of Pakistan.</p>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 Copyright:<a href="./home.html">PakistanOdyssey.com</a>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

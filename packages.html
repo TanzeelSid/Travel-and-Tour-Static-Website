@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pakistan Odyssey - Travel Packages</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/f41c40a5de.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="./css/packagestyle.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
     <style>
-
-
-
-
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-color: #393E46;
         }
 
         header {
-            background: #004d40;
+            margin-top: 70px;
+            background: #4E9F3D;
             color: white;
             padding: 20px 0;
             text-align: center;
@@ -32,41 +34,71 @@
             margin: 20px auto;
         }
 
-        .about-us {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .about-us h2 {
-            color: #004d40;
-        }
-
         .packages {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
             gap: 20px;
         }
 
         .package {
-            background: white;
+            background: #393E46;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
             overflow: hidden;
         }
+        .package .img {
+    position: relative;
+    background-image: url(./img/images.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 250px; /* Increased height for better spacing */
+    display: flex;
+    flex-direction: column; /* Ensures items stack vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.212);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
 
-        .package img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+.package .img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1;
+    border-radius: 8px;
+}
 
+.package .img h1, 
+.package .img p {
+    position: relative;
+    z-index: 2; /* Ensure the text appears above the overlay */
+    margin: 0;
+    padding: 0;
+}
+
+.package .img h1 {
+    font-size: 1.8em; /* Adjusted font size */
+    margin-bottom: 10px; /* Adds spacing between h2 and p */
+}
+
+.package .img p {
+    font-size: 1em; /* Slightly smaller text for the paragraph */
+    line-height: 1.5;
+    margin-top: 0; /* Ensures no extra spacing */
+}
+
+        
         .package-content {
             padding: 15px;
-        }
-
-        .package-content h3 {
-            color: #004d40;
-            margin-top: 0;
         }
 
         .standards {
@@ -76,11 +108,16 @@
         .standards span {
             display: inline-block;
             background: #e0f2f1;
-            color: #004d40;
+            color: #4E9F3D;
             padding: 5px 10px;
             margin: 5px 0;
             border-radius: 4px;
             font-size: 14px;
+        }
+        .standards span:hover {
+            cursor: pointer;
+            background: #4E9F3D;
+            color: white;
         }
 
         .buttons {
@@ -98,82 +135,435 @@
         }
 
         .buttons .details {
-            background: #00796b;
+            background: #4E9F3D;
+        }
+        .buttons .details:hover {
+            color: #4E9F3D;
+            background: white;
         }
 
         .buttons .book {
-            background: #004d40;
+            background: #4E9F3D;
+        }
+        .buttons .book:hover {
+            color: #4E9F3D;
+            background: white;
         }
     </style>
 </head>
 <body>
+<!-- Navbar start -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 shadow-sm fixed-top">
+    <a href="home.html" class="navbar-brand font-weight-bold mr-auto">Pakistan <span>Odyssey</span></a>
+    <div id="navbarContent" class="collapse navbar-collapse order-sm-12 order-lg-1">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown megamenu">
+                <a id="megamenu" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">Packages</a>
+                <div aria-labelledby="megamenu" class="dropdown-menu border-0 p-0 m-0">
+                    <ul class="list-unstyled bg-dark text-light p-4 m-0">
+                        <li class="nav-item"><a href="packages.html" class="nav-link text-small pb-2">Pakistan Tour</a></li>
+                        <li class="nav-item"><a href="packages.html" class="nav-link text-small pb-2">Sindh Tour</a></li>
+                        <li class="nav-item"><a href="packages.html" class="nav-link text-small pb-2">Balochistan Tour</a></li>
+                        <li class="nav-item"><a href="packages.html" class="nav-link text-small pb-2">Punjab Tour</a></li>
+                        <li class="nav-item"><a href="packages.html" class="nav-link text-small pb-2">KPK Tour</a></li>
+                        <li class="nav-item"><a href="packages.html" class="nav-link text-small pb-2">Northern Areas Tour</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item"><a href="about.html" class="nav-link font-weight-bold text-uppercase">About</a></li>
+            <li class="nav-item"><a href="gallery.html" class="nav-link font-weight-bold text-uppercase">Gallery</a></li>
+            <li class="nav-item"><a href="signup.html" class="nav-link font-weight-bold text-uppercase">Sign Up</a></li>
+            <li class="nav-item"><a href="./contactus.html" class="nav-link font-weight-bold text-uppercase">Contact</a></li>
+        </ul>
+    </div>
+    <button type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler order-md-1">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+<!-- Navbar end -->
+
+
+
     <header>
         <h1>Pakistan Odyssey - Explore the Beauty of Pakistan</h1>
     </header>
 
     <div class="container1">
-        <section class="about-us">
-            <h2>About Us</h2>
-            <p>Welcome to Pakistan Odyssey, your trusted travel partner in exploring the breathtaking landscapes, rich culture, and hidden treasures of Pakistan. Choose from a variety of exclusive packages tailored to offer unforgettable experiences.</p>
-        </section>
-
-        <section class="packages">
+        <div class="packages">
             <!-- Example Package -->
             <div class="package">
-                <img src="./img/images.jpeg" alt="Grand Pakistan Tour">
-                <div class="package-content">
-                    <h3>Grand Pakistan Tour</h3>
+                <div class="img">                    
+                    <h1> Pakistan Tour <span>Packages</span></h1>
                     <p>Discover the entire country with visits to 8 iconic destinations, showcasing Pakistan's incredible diversity and culture.</p>
-
+                </div>
+                <div class="package-content">
+                    
                     <div class="container">
-                        <!-- <h1 class="title">Pakiatan Tour Packages</h1> -->
                         <div class="timeline">
                             <div class="swiper-container">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide" style="background-image: url(https://unsplash.it/1920/500?image=11;)" data-year="1st Destination">
-                                        <div class="swiper-slide-content"><span class="timeline-year">2011</span>
-                                            <h4 class="timeline-title">Our nice super title</h4>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgBg0EKvlHvZFqvS4I2-3yIJtNj8AmUW_ssA3V9OZB5FeLZFx_6Ny8zVznJUT4)" data-year="1st Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">1st Destination</span>
+                                            <h4 class="timeline-title">Hunza Valley</h4>
+                                            <p class="timeline-text">Nestled in the Karakoram Range, Hunza Valley offers breathtaking scenery, including the majestic Rakaposhi Peak and Attabad Lake.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSKMPsj0sayBgoKrmS-9MgSPu3FQSahOS77vfDhm_oPKUkmquFKGf4JjkLouED3)" data-year="2nd Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">2nd Destination</span>
+                                            <h4 class="timeline-title">Swat Valley</h4>
+                                            <p class="timeline-text">Often called the "Switzerland of Pakistan," Swat Valley boasts stunning landscapes, ancient Buddhist ruins, and the picturesque Mahodand Lake.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQD72SLrm5MzpaxyJ6xQ4P1jJOfb5cI65pyZOLQXlGjPHy5Tt3MYMK7x28G-cIr)" data-year="3rd Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">3rd Destination</span>
+                                            <h4 class="timeline-title">Naran Valley</h4>
+                                            <p class="timeline-text">A haven for nature lovers, Naran Valley features lush green valleys, cascading waterfalls, and the serene Saiful Muluk Lake.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRM0p3d66fbp9U3_ycDX2k8OkDB83XBr4xqnrVkjFSSFgT9uxr0wjswEmMCkMxy)" data-year="4th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">4th Destination</span>
+                                            <h4 class="timeline-title">Gilgit-Baltistan</h4>
+                                            <p class="timeline-text">Home to the Karakoram Highway, Gilgit-Baltistan offers a diverse landscape, including glaciers, mountains, and the ancient city of Gilgit.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTG-01M7qFxMW88ZHmLKFZ7hsY1SMmzLiAqdbRql93zdnOp1lXZwvdDgWTWoX0O)" data-year="5th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">5th Destination</span>
+                                            <h4 class="timeline-title">Lahore</h4>
+                                            <p class="timeline-text">The cultural heart of Pakistan, Lahore is renowned for its historical sites, including the Badshahi Mosque and the Lahore Fort, as well as its vibrant food scene.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTpbOjNmKdS0nF97m1TpSPGuKc9XVX7fAOO_r1G0tTudDE2o5YJDymja1-y6pGN)" data-year="6th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">6th Destination</span>
+                                            <h4 class="timeline-title">Islamabad</h4>
+                                            <p class="timeline-text">The modern capital of Pakistan, Islamabad boasts well-planned architecture, lush green parks, and the iconic Faisal Mosque.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTgMM3HtPdy5_vqijs0o1XTW0w2M924fx24GzbOMiCHluQ3WhX30iCubEAmp-52)" data-year="7th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">7th Destination</span>
+                                            <h4 class="timeline-title">Karachi</h4>
+                                            <p class="timeline-text">The bustling metropolis of Pakistan, Karachi offers a unique blend of old and new, with historical sites like the Mohatta Palace and modern attractions like the Clifton Beach.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRsu_MDqVxBOq26wPCGQFR8dQDjDsgB30FF_RKyVlxcO9aE_Ca0hfpLoOrY-5D5)" data-year="8th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">8th Destination</span>
+                                            <h4 class="timeline-title">Mohenjo-daro</h4>
+                                            <p class="timeline-text">A UNESCO World Heritage Site, Mohenjo-daro is the remains of an ancient Indus Valley Civilization city, offering a glimpse into Pakistan's rich history.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="standards">
+                        <span>Basic x1-2 <i class="fas fa-user"></i></span>
+                        <span>Pro x3-6 <i class="fas fa-user"></i></span>
+                        <span>Premium x7-12 <i class="fas fa-user"></i></span>
+                    </div>
+                    <div class="buttons">
+                        <a href="#" class="details">View Details</a>
+                        <a href="#" class="book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repeat for each package -->
+
+            <div class="package">
+                <div class="img">                    
+                    <h1> Sindh Tour <span>Packages</span></h1>
+                    <p>Discover the entire country with visits to 8 iconic destinations, showcasing Pakistan's incredible diversity and culture.</p>
+                </div>
+                <div class="package-content">
+                    
+                    <div class="container">
+                        <div class="timeline">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR4vF7ekk6RrjxONsz9TgYzniPlMgSLxUdQ2Q_5oYc7W4508wzYAbVcckTL-46j)" data-year="1st Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">1st Destination</span>
+                                            <h4 class="timeline-title">Mohenjo-daro</h4>
                                             <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide" style="background-image: url(https://unsplash.it/1920/500?image=12;)" data-year="2nd Destination">
-                                        <div class="swiper-slide-content"><span class="timeline-year">2012</span>
-                                            <h4 class="timeline-title">Our nice super title</h4>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTVwUh5bERPlchj-jXzCzguPpO4MU_-uuGIfvkEbhvO3Mn6CNzuAcd4HEk-RMp2)" data-year="2nd Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">2nd Destination</span>
+                                            <h4 class="timeline-title">Thatta</h4>
                                             <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide" style="background-image: url(https://unsplash.it/1920/500?image=13;)" data-year="3rd Destination">
-                                        <div class="swiper-slide-content"><span class="timeline-year">2013</span>
-                                            <h4 class="timeline-title">Our nice super title</h4>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRHEEhFm_ZRLwur99-dSn1Jc0YQ4S9aSDy8waqB3leMK06oODX76ngli2eNyTgk)" data-year="3rd Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">3rd Destination</span>
+                                            <h4 class="timeline-title">Gorakh hill station</h4>
                                             <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide" style="background-image: url(https://unsplash.it/1920/500?image=14;)" data-year="4th Destination">
-                                        <div class="swiper-slide-content"><span class="timeline-year">2014</span>
-                                            <h4 class="timeline-title">Our nice super title</h4>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRVkMfglcV1MgAU914iblaa9RSGS9C-48Ks8DrcE4XJ48h7RFxjpr3ZjR8IUqjg)" data-year="4th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">4th Destination</span>
+                                            <h4 class="timeline-title">Keti Bandar</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2bz9ugEUSFJN1FPy5SerSVkuKTjxJdbiS0Yn_DLFckgo4p5ADsAtV7P7uaaMf)" data-year="5th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">5th Destination</span>
+                                            <h4 class="timeline-title">Haleji Lake</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcStUWBMpB10RilTBMsuNWxwOjSNUcmV5kNSVC89kJCw-OpnEDAxZb-JYfvfaSBF)" data-year="6th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">6th Destination</span>
+                                            <h4 class="timeline-title">Miranpur Dam</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQw1ew1OxGIYpPw_TXISdokih8etwJC8cGOYYNAb5T1uVy2gZduhBP_emU3GLEZ)" data-year="7th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">7th Destination</span>
+                                            <h4 class="timeline-title">Kotri</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCK2PKLMV83XjiefViCy1cH0Hmw9anD1bOnd5Ak_PifLf5tEUAWnHjWOnI-OUk)" data-year="8th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">8th Destination</span>
+                                            <h4 class="timeline-title">Karachi</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="standards">
+                        <span>Basic x1-2 <i class="fas fa-user"></i></span>
+                        <span>Pro x3-6 <i class="fas fa-user"></i></span>
+                        <span>Premium x7-12 <i class="fas fa-user"></i></span>
+                    </div>
+                    <div class="buttons">
+                        <a href="#" class="details">View Details</a>
+                        <a href="#" class="book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="package">
+                <div class="img">                    
+                    <h1> Balochistan Tour <span>Packages</span></h1>
+                    <p>Discover the entire country with visits to 8 iconic destinations, showcasing Pakistan's incredible diversity and culture.</p>
+                </div>
+                <div class="package-content">
+                    
+                    <div class="container">
+                        <div class="timeline">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRLtJcy81uHpab8wsC9ckxNGihExb5trjWhQZHGkR2_U_WYY__CX74SfpTKwErM)" data-year="1st Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">1st Destination</span>
+                                            <h4 class="timeline-title">Quetta</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZXVro68PmrzhEQklvnsqlcByUGf2LYakeaHvk6uqXusbleXcxq04oRcdEz5oV)" data-year="2nd Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">2nd Destination</span>
+                                            <h4 class="timeline-title">Ziarat</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3VLGdELooBPj4cAnddegiZxBEbhSuGJ_zm5Vw226cpc6dgz98xeGyqR1gkS98)" data-year="3rd Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">3rd Destination</span>
+                                            <h4 class="timeline-title">Bolan Pass</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8XJMFiH6dP8Wjc9ddFHU3fV4b4y-eUdSQG-f656tdno5fUAXhaV4lDS0qrhny)" data-year="4th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">4th Destination</span>
+                                            <h4 class="timeline-title">Hanna Lake</h4>
                                             <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                         </div>
                                     </div>
                                     <div class="swiper-slide" style="background-image: url(https://unsplash.it/1920/500?image=15;)" data-year="5th Destination">
-                                        <div class="swiper-slide-content"><span class="timeline-year">2015</span>
-                                            <h4 class="timeline-title">Our nice super title</h4>
+                                        <div class="swiper-slide-content"><span class="timeline-year">5th Destination</span>
+                                            <h4 class="timeline-title">Prinzgai</h4>
                                             <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide" style="background-image: url(https://unsplash.it/1920/500?image=16;)" data-year="6th Destination">
-                                        <div class="swiper-slide-content"><span class="timeline-year">2017</span>
-                                            <h4 class="timeline-title">Our nice super title</h4>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZHHFnKXQbG6Ko7vG8jhR1T5uCycM55shX0zt7DSR2AOje3dArnc51eLCacf9G)" data-year="6th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">6th Destination</span>
+                                            <h4 class="timeline-title">Uthal</h4>
                                             <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide" style="background-image: url(https://unsplash.it/1920/500?image=16;)" data-year="7th Destination">
-                                        <div class="swiper-slide-content"><span class="timeline-year">2017</span>
-                                            <h4 class="timeline-title">Our nice super title</h4>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQGiyiYWaHu2cKCk4G9Bq3HkvsVQX_XvajcpfxwkzPsMOGTJkJaOVT2gMja6jZZ)" data-year="7th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">7th Destination</span>
+                                            <h4 class="timeline-title">Lasbela</h4>
                                             <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide" style="background-image: url(https://unsplash.it/1920/500?image=16;)" data-year="8th Destination">
-                                        <div class="swiper-slide-content"><span class="timeline-year">2017</span>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRqwE-8CEQX9iGZ5295SNPhNISicEeGBPZWjQGee5_RI2Pj8NezhqA6O-lZxsQR)" data-year="8th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">8th Destination</span>
+                                            <h4 class="timeline-title">Khuzdar</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="standards">
+                        <span>Basic x1-2 <i class="fas fa-user"></i></span>
+                        <span>Pro x3-6 <i class="fas fa-user"></i></span>
+                        <span>Premium x7-12 <i class="fas fa-user"></i></span>
+                    </div>
+                    <div class="buttons">
+                        <a href="#" class="details">View Details</a>
+                        <a href="#" class="book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="package">
+                <div class="img">                    
+                    <h1> Punjab Tour <span>Packages</span></h1>
+                    <p>Discover the entire country with visits to 8 iconic destinations, showcasing Pakistan's incredible diversity and culture.</p>
+                </div>
+                <div class="package-content">
+                    
+                    <div class="container">
+                        <div class="timeline">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQqO9UXwghEHrvVLzfFeBjVjqFcTg3NiEQW8vTUf0CIHTRldiThUTzAqjS5pdyG)" data-year="1st Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">1st Destination</span>
+                                            <h4 class="timeline-title">Lahore</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0lm4nm2rWEziIMthuC-YRkh7y5AYXlwOhiylWLULTmmQr0L1Uo8EcNf46SQp5)" data-year="2nd Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">2nd Destination</span>
+                                            <h4 class="timeline-title">Islamabad</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9uJSzqJMOPmG4q7ztGDt9GNLZcBjwlSY-yULLprYVTvSVBzxpRAl8P3MQC9kV)" data-year="3rd Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">3rd Destination</span>
+                                            <h4 class="timeline-title">Murree</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQanPRfxHhfDIBpX7jtR8uZSbdPW5FpFw5VzYeujl3DRfvlZu26DcLNJy8QntQl)" data-year="4th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">4th Destination</span>
+                                            <h4 class="timeline-title">Taxila</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXjlMyFxIsEhUIErWje7T7UHCeK1O_tgavP2MgZxBrmjFwA4xjMAS5KmGOGqXR)" data-year="5th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">5th Destination</span>
+                                            <h4 class="timeline-title">Bahawalpur</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQy2hVq-BfQ7ClO6C4-tOAnAeFZA5_lN4Wa2g4MsmGT4DsNe230QOF1P_WPcAKq)" data-year="6th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">6th Destination</span>
+                                            <h4 class="timeline-title">Faisalabad</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTcPJEPiF0KXW8muw0IoWCe-5n4UMwY8IUzjNfHSqJ8jZH5pWk_0ZIU0TitaYsz)" data-year="7th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">7th Destination</span>
+                                            <h4 class="timeline-title">Sialkot</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSoNWAzt6nL6XY7fGOYjf2GzWxlVTC6OHkJ-lXjgHcCXtdn8_dyHLquM5P3kfUh)" data-year="8th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">8th Destination</span>
+                                            <h4 class="timeline-title">Sheikhupura</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="standards">
+                        <span>Basic x1-2 <i class="fas fa-user"></i></span>
+                        <span>Pro x3-6 <i class="fas fa-user"></i></span>
+                        <span>Premium x7-12 <i class="fas fa-user"></i></span>
+                    </div>
+                    <div class="buttons">
+                        <a href="#" class="details">View Details</a>
+                        <a href="#" class="book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="package">
+                <div class="img">                    
+                    <h1> Khyber Pakhtunkhwa Tour <span>Packages</span></h1>
+                    <p>Discover the entire country with visits to 8 iconic destinations, showcasing Pakistan's incredible diversity and culture.</p>
+                </div>
+                <div class="package-content">
+                    
+                    <div class="container">
+                        <div class="timeline">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTq02LAHx8xoJPg5zlgNKEKDF8e60iw9x1Q7OzCcjfxsIWfp3bNx7v-29UuBMJg)" data-year="1st Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">1st Destination</span>
+                                            <h4 class="timeline-title">Swat Valley</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSt71eCoVVDfizqc-3ta-u8Zspi7trMUnrNGEZzAmISFTDD_5Y0-iwG_Oh1uVLJ)" data-year="2nd Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">2nd Destination</span>
+                                            <h4 class="timeline-title">Chitral</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTNJgi-PKADW0IujuGviYUvRMZjvl1vJkpx3t8cMVroXb7QRza2m0_Fl_H2DIrE)" data-year="3rd Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">3rd Destination</span>
+                                            <h4 class="timeline-title">Peshawar</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ4KdflbuouMPyk35xpy7nB8igJ9bGZ5ktqxJDVHG_HxuR9IHr9f4x2TDpnT7Cd)" data-year="4th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">4th Destination</span>
+                                            <h4 class="timeline-title">Abbottabad</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTUI1nYjHDg-Y3Iilxb3vtw4MSPAf-tY7jRU-5Ep9JW8EuHRt36xeXk0ISHpSnz)" data-year="5th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">5th Destination</span>
+                                            <h4 class="timeline-title">Dir</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSpAAKF46vJ7l3shtuePdljB8m9_pWYSzaZJf_H4-B3cTEgNdb8SibG0NrTkRS6)" data-year="6th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">6th Destination</span>
+                                            <h4 class="timeline-title">Buner</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQUJem4Yi8OJyNRSUatgkye4IIpWiiRKDX94mY3HAXjxMSJwgsOG5KtVnjjmpv)" data-year="7th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">7th Destination</span>
+                                            <h4 class="timeline-title">Kohat</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS5D7Gno_NCXCv1iu9y6X_I8ANIyQE5y7nzZlRUASfw9SC3PgEXPPJ1OKK2dXOy)" data-year="8th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">8th Destination</span>
                                             <h4 class="timeline-title">Our nice super title</h4>
                                             <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                         </div>
@@ -187,9 +577,9 @@
                     </div>
 
                     <div class="standards">
-                        <span>Basic</span>
-                        <span>Pro</span>
-                        <span>Premium</span>
+                        <span>Basic x1-2 <i class="fas fa-user"></i></span>
+                        <span>Pro x3-6 <i class="fas fa-user"></i></span>
+                        <span>Premium x7-12 <i class="fas fa-user"></i></span>
                     </div>
                     <div class="buttons">
                         <a href="#" class="details">View Details</a>
@@ -198,10 +588,124 @@
                 </div>
             </div>
 
-            <!-- Repeat for each package -->
-        </section>
+            <div class="package">
+                <div class="img">                    
+                    <h1> Northern Areas Tour <span>Packages</span></h1>
+                    <p>Discover the entire country with visits to 8 iconic destinations, showcasing Pakistan's incredible diversity and culture.</p>
+                </div>
+                <div class="package-content">
+                    
+                    <div class="container">
+                        <div class="timeline">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQSMPKCVj7uYtdUiNe5LjU_oOt9Af-txtAzlHj6_OlO4jY8FQTlN-9QvIX4m0px)" data-year="1st Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">1st Destination</span>
+                                            <h4 class="timeline-title">Hunza Valley</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTMswtjrFfTnikWVsxV8sQk3ZYnhnVe4sC9zn6FTWyManJmpDBtEfIY9zHq7mSq)" data-year="2nd Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">2nd Destination</span>
+                                            <h4 class="timeline-title">Gilgit-Baltistan</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQgrTZ2BBI6VHN3-TY2vdw_fWVuXFfgVGURPwH5tRdc72-B3J3gO5-KdSn72aJY)" data-year="3rd Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">3rd Destination</span>
+                                            <h4 class="timeline-title">Naran Valley</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTfyL-3SIIew3kpPDiz8G8PIBbmzQ_F4E2BLCI1QDwCqWlinQqUPjuV5ZvHpPZw)" data-year="4th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">4th Destination</span>
+                                            <h4 class="timeline-title">Skardu</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQUOkqqSGgvaXVBr01EYuONZTfSR0wxmwvnIupn6aqB-I4Q-7gFnygl7S2uYFbE)" data-year="5th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">5th Destination</span>
+                                            <h4 class="timeline-title">Neelum Valley</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT3vrtozbECvIWxNFTRWAdzhRqUYEamLs2vpBj1xtmJ8cHcBgJn9CDntD-TOFre)" data-year="6th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">6th Destination</span>
+                                            <h4 class="timeline-title">Astore Valley</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR6pzZJ0CPa2HePuIrH20BzMMsT0f2vdD2iDBvLz_aPjIUAxdOYsNAiQLkWXw1v)" data-year="7th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">7th Destination</span>
+                                            <h4 class="timeline-title">Chitral</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBfJlpV32x9BorVM4g-JOrK09T96kMUUAqAIUPrjJyzg7QM07IraS6ok3fW1_W)" data-year="8th Destination">
+                                        <div class="swiper-slide-content"><span class="timeline-year">8th Destination</span>
+                                            <h4 class="timeline-title">Kaghan Valley</h4>
+                                            <p class="timeline-text">Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="standards">
+                        <span>Basic x1-2 <i class="fas fa-user"></i></span>
+                        <span>Pro x3-6 <i class="fas fa-user"></i></span>
+                        <span>Premium x7-12 <i class="fas fa-user"></i></span>
+                    </div>
+                    <div class="buttons">
+                        <a href="#" class="details">View Details</a>
+                        <a href="#" class="book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </div>
 
+    <!-- Footer Section -->
+    <div class="footer-container">
+        <footer class="footer">
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h6>About us</h6>
+                    <a href="#">Learn more about Pakistan Odyssey</a>
+                </div>
+                <div class="footer-column">
+                    <h6>Services</h6>
+                    <a href="#">Our travel packages</a>
+                </div>
+                <div class="footer-column">
+                    <h6>Contact</h6>
+                    <a href="#">Get in touch with us</a>
+                </div>
+            </div>
+            <div class="footer-text">
+                <p>Pakistan Odyssey: Your trusted partner in discovering the extraordinary beauty of Pakistan.</p>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 Copyright:<a href="./home.html">PakistanOdyssey.com</a>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
     <script>

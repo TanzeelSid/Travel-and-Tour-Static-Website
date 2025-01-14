@@ -78,5 +78,38 @@
         </div>
     </div>
         
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent form submission for validation
+
+    // Get form fields
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    // Regex for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Validation messages
+    if (!name) {
+        alert('Name is required.');
+        return;
+    }
+    if (!email || !emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+    if (!message) {
+        alert('Message is required.');
+        return;
+    }
+
+    // If all validations pass
+    alert('Form submitted successfully!');
+    this.submit(); // Submit the form
+});
+
+    </script>
 </body>
 </html>

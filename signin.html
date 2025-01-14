@@ -212,6 +212,39 @@ footer {
     </div>
 </div>
 
+<script>
+    document.querySelector('form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent form submission for validation
+
+    // Get form fields
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    // Regex for validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Validation messages
+    if (!email || !emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+    if (!password || password.length < 6) {
+        alert('Password must be at least 6 characters long.');
+        return;
+    }
+    if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+    }
+
+    // If all validations pass
+    alert('Sign In successfully!');
+    this.submit(); // Submit the form
+});
+
+</script>
+
 <footer>
     <p>&copy; 2025 Pakistan Odyssey. All Rights Reserved.</p>
 </footer>

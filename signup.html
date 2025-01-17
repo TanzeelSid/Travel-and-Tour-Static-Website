@@ -142,7 +142,6 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
-    /* margin-top: 50px; */
 }
 
     </style>
@@ -233,7 +232,7 @@ footer {
 </footer>
 
 <script>
-    document.querySelector('form').addEventListener('submit', function (event) {
+document.querySelector('form').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent form submission for validation
 
     // Get form fields
@@ -246,7 +245,7 @@ footer {
 
     // Regex for validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^[0-9]{11}$/; // Example: 10-digit phone numbers
+    const phoneRegex = /^[0-9]{11}$/; // Example: 11-digit phone numbers
 
     // Validation messages
     if (!firstName) {
